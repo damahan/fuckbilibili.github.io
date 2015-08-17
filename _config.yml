@@ -8,7 +8,7 @@ include: ['.htaccess']
 # Setup
 title:            "FuckBilibili"
 # tagline:          Black Theme for Jekyll
-description:      "这里集合了各种b站的黑科技和b站的系统缺陷以及漏洞的公开。我们的宗旨就是：艹翻b站！≖‿≖✧"
+description:      "这里集合了各种b站的黑科技和b站的系统缺陷以及漏洞的公开。我们的宗旨就是：干翻b站！≖‿≖✧"
 url:              http://www.fuckbilibili.com
 baseurl:          ""
 
