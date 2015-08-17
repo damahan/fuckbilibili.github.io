@@ -6,10 +6,10 @@ excerpt_separator: "\n\n"
 include: ['.htaccess']
 
 # Setup
-title:            "FuckBilibili"
+title:            "哔哩哔哩乾nm的杯! - FuckBilibili"
 # tagline:          Black Theme for Jekyll
-# description:      "A two-column black theme with a scrolling sidebar. Ideal for sites requiring a master-detail layout, e.g. documentation, cheatsheets, lyrics, notes..."
-url:              https://fuckbilibili.com
+description:      "这里集合了各种b站的黑科技和b站的系统缺陷以及漏洞的公开。我们的宗旨就是：艹翻b站！≖‿≖✧"
+url:              http://www.fuckbilibili.com
 baseurl:          ""
 
 # author:
