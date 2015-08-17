@@ -1,6 +1,6 @@
 ---
 layout: page
-permalink: "/test/" #页面目录，例如 `/abc/`
+permalink: "test.html" #页面目录，例如 `/abc/`
 title:  "标题"
 ---
 
