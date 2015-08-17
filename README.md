@@ -1,3 +1,7 @@
+# FuckBilibili
+Yeah, you are right, this is a fucking source code of a fucking fuckbilibili.com page. 
+The following is the theme I'm using.
+
 # BlackDoc
 
 BlackDoc is a two-column [Jekyll](http://jekyllrb.com) theme that's ideal for websites that require a master-detail layout for viewing of content. It's based on [Poole](http://getpoole.com), the Jekyll butler, and the [Hyde](http://hyde.getpoole.com) theme.
