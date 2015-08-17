@@ -1,26 +1,34 @@
 # Dependencies
-markdown:         redcarpet
-highlighter:      pygments
+markdown:         kramdown
+# highlighter:      pygments 
 
 # Permalinks
-permalink:        pretty
-relative_permalinks: true
+permalink: /:year/:month/:title/
+# relative_permalinks: true
 
 # Setup
-title:            BlackDoc
-tagline:          Black Theme for Jekyll
-description:      "A two-column black theme with a scrolling sidebar. Ideal for sites requiring a master-detail layout, e.g. documentation, cheatsheets, lyrics, notes..."
-url:              https://github.com/karloespiritu/blackdoc
-baseurl:          /
+title:            "FuckBilibili"
+# tagline:          Black Theme for Jekyll
+# description:      "A two-column black theme with a scrolling sidebar. Ideal for sites requiring a master-detail layout, e.g. documentation, cheatsheets, lyrics, notes..."
+url:              https://fuckbilibili.com
+baseurl:          ""
 
-author:
-  name:           'Karlo Espiritu'
-  url:            https://twitter.com/karloespiritu
+# author:
+#  name:           'Karlo Espiritu'
+#  url:            https://twitter.com/karloespiritu
 
-paginate:         5
+paginate:         12
 
 # Custom vars
 version:          1.0.0
 
-github:
-  repo:           https://github.com/karloespiritu/blackdoc
+# github:
+#   repo:           https://github.com/karloespiritu/blackdoc
+
+# Exclude these files from your production _site
+exclude:
+- Gemfile
+- Gemfile.lock
+- LICENSE
+- README.md
+- CNAME
