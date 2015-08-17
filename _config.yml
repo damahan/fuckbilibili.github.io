@@ -1,10 +1,9 @@
-# Dependencies
-markdown:         kramdown
-# highlighter:      pygments 
-
-# Permalinks
+# Theme works best with Kramdown (using the table of contents function)
+markdown: kramdown
 permalink: /:year/:month/:title/
-# relative_permalinks: true
+highlight: pygments
+excerpt_separator: "\n\n"
+include: ['.htaccess']
 
 # Setup
 title:            "FuckBilibili"
@@ -17,11 +16,6 @@ baseurl:          ""
 #  name:           'Karlo Espiritu'
 #  url:            https://twitter.com/karloespiritu
 
-paginate:         12
-
-# Custom vars
-version:          1.0.0
-
 # github:
 #   repo:           https://github.com/karloespiritu/blackdoc
 
@@ -32,3 +26,6 @@ exclude:
 - LICENSE
 - README.md
 - CNAME
+
+gems:
+- jekyll-redirect-from
