@@ -2,6 +2,6 @@
 layout: page
 ---
 
-# This website is building, please wait......
+# 程序猿其实是不好当的……我™正在写呢你没看到啊！！！！
 
-Anyway, fuck bilibili.
+不管怎样，先艹b站。
