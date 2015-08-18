@@ -106,7 +106,7 @@ if __name__=='__main__':
 
 [Github](https://github.com/cnbeining/DNSTester)
 
-###javascript版：
+###Javascript版：
 
 {% highlight javascript %}
 /*!
