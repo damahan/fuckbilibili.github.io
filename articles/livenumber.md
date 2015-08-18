@@ -4,15 +4,15 @@ permalink: "livenumber.html"
 title:  "增加直播间人数"
 ---
 
-##事前唠个叨
+## 事前唠个叨
 
 这个项目实际上是我一开始听到别人说b站的弹幕姬在连接服务器后会被算成一个观众，而且现在有很多人被联系问要不要刷人数，这引起了我的兴趣。
 
-经过三种弹幕姬代码的反复对比，最终发现b站是使用**WebSocket**进行的弹幕连接和获取。
+经过三种弹幕姬代码的反复对比，最终发现b站是使用 **WebSocket** 进行的弹幕连接和获取。
 
-于是<del>跪着</del>请*cnBeining*写了一个Python版本的WebSocket连接器，又<del>厚颜无耻</del>的让她加上了一个HTTP Proxy功能……
+于是<del>跪着</del>请 *cnBeining* 写了一个 Python 版本的 WebSocket 连接器，又<del>厚颜无耻</del>的让她加上了一个 HTTP Proxy 功能……
 
-###源码如下：
+### 源码如下：
 
 {% highlight python %}
 #!/usr/bin/env python
@@ -146,7 +146,7 @@ if __name__=='__main__':
     main(cid, thread_number, is_proxy)
 {% endhighlight %}
 
-嘛，开包即用，效果良好。大家可以在[这里](/script/live_number.py)或者[Github](https://gist.github.com/cnbeining/6b2273d7e332f29193d0)上找到源码。
+嘛，开包即用，效果良好。大家可以在[这里](/script/live_number.py)或者 [Github](https://gist.github.com/cnbeining/6b2273d7e332f29193d0) 上找到源码。
 
 ##用法
 
@@ -159,4 +159,4 @@ if __name__=='__main__':
 
 ***
 
-就是这样，点开导航栏中的*cnBeining*页面，你会发现更多有趣的东西~
+就是这样，点开导航栏中的 *cnBeining* 页面，你会发现更多有趣的东西~

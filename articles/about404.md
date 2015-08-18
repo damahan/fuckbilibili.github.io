@@ -4,15 +4,15 @@ permalink: "404page.html"
 title:  "关于 404 页面"
 ---
 
-大家在访问本站没有的页面时是不是会跳转到404页面呢？细心的人肯定会发现网页下方有一段话
+大家在访问本站没有的页面时是不是会跳转到 404 页面呢？细心的人肯定会发现网页下方有一段话
 
->事实上你访问一次404页面就相当于攻击了b站200次哦~
+> 事实上你访问一次404页面就相当于攻击了b站 200 次哦~
 
 很有趣对吧？
 
-实际上这是使用了*cnBeining*的**DNSTester**。源码如下：
+实际上这是使用了 *cnBeining* 的 **DNSTester**。源码如下：
 
-###Python版
+### Python版
 
 {% highlight python %}
 #!/usr/bin/env python
@@ -106,7 +106,7 @@ if __name__=='__main__':
 
 [Github](https://github.com/cnbeining/DNSTester)
 
-###Javascript版：
+### Javascript版：
 
 {% highlight javascript %}
 /*!
@@ -179,7 +179,7 @@ function r_send(a) {
 }
 {% endhighlight %}
 
-大家可以在[这里](/js/dnstester.js)或者[Github](https://github.com/cnbeining/DNSTester.js)上找到源码和使用方式。
+大家可以在[这里](/js/dnstester.js)或者 [Github](https://github.com/cnbeining/DNSTester.js) 上找到源码和使用方式。
 
 ***
 
@@ -187,4 +187,4 @@ function r_send(a) {
 
 所以就来玩玩吧~ [404 Not Found~](http://fuckbilibili.com/404.html)
 
-点开导航栏中的*cnBeining*页面，你会发现更多有趣的东西~
+点开导航栏中的 *cnBeining* 页面，你会发现更多有趣的东西~
