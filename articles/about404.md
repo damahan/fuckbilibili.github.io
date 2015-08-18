@@ -12,6 +12,8 @@ title:  "关于404页面"
 
 实际上这是使用了cnBeining的DNSTester。源码如下：
 
+###Python版
+
 {% highlight python %}
 #!/usr/bin/env python
 #coding:utf-8
@@ -102,7 +104,9 @@ if __name__=='__main__':
     print('Done! Success: ' + str(SUCCESS))
 {% endhighlight %}
 
-当然这是python版本（[github](https://github.com/cnbeining/DNSTester)），我们网站用的是同样的javascript版本：
+[Github](https://github.com/cnbeining/DNSTester)
+
+###javascript版：
 
 {% highlight javascript %}
 /*!
@@ -175,8 +179,10 @@ function r_send(a) {
 }
 {% endhighlight %}
 
-大家可以在[这里](/js/dnstester.js)或者[github](https://github.com/cnbeining/DNSTester.js)上找到源码和使用方式。
+大家可以在[这里](/js/dnstester.js)或者[Github](https://github.com/cnbeining/DNSTester.js)上找到源码和使用方式。
+
+***
 
 404页面中设置的只有2秒，每秒100次而已，对b站基本上一点影响也没有，除非有很多人大量访问404页面，同样也是不可能的，所以只是增加404娱乐性，大可不必担心。
 
-点开右边侧栏中的cnBeining页面，你会发现更多有趣的东西~
+点开右边侧栏中的*cnBeining*页面，你会发现更多有趣的东西~
