@@ -1,4 +1,6 @@
 - title: "增加直播间人数"
   url: "/livenumber.html"
+- title: "B站API"
+  url: "/biliapi.html"
 - title: "关于 404 页面"
   url: "/404page.html"
