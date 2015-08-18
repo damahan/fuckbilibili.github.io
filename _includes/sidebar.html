@@ -1,7 +1,7 @@
 <div class="sidebar">
   <div class="container sidebar-sticky">
     <div class="sidebar-about">
-    <a href="/"><div class="svg-fuckbilibili-logo" style="width:272px;height:4em;background-repeat:no-repeat;max-width:100%;margin-left:auto;margin-right:auto;"></div></a>
+    <a href="/"><div class="svg-fuckbilibili-logo" style="width:272px;height:5em;background-repeat:no-repeat;max-width:100%;margin-left:auto;margin-right:auto;"></div></a>
       <p class="lead">{{ site.description }}</p>
     </div>
 
@@ -14,12 +14,8 @@
       {% endcomment %}
 
       {% assign pages_list = site.pages %}
-      {% for node in pages_list %}
-        {% if node.title != null %}
-          {% if node.layout == "page" %}{% if node.noindex %}{% else %}
-            <a class="sidebar-nav-item{% if page.url == node.url %} active{% endif %}" href="{{ site.baseurl }}{{ node.url  | remove_first: '/' }}">{{ node.title }}</a>
-          {% endif %}{% endif %}
-        {% endif %}
+      {% for post in site.data.navigation %}
+        <a class="sidebar-nav-item{% if page.url == post.url %} active{% endif %}" href="{{ post.url }}">{{ post.title }}</a>
       {% endfor %}
       <hr>
       <a class="sidebar-nav-item" href="http://www.cnbeining.com">cnBeining</a>
