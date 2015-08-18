@@ -6,4 +6,4 @@ layout: page
 
 不管怎样，先干b站。
 
-你可以先看看[这个](http://wiki.esu.im/%E5%BE%90%E9%80%B8)这个了解一些东西。
+你可以先看看[这个](http://wiki.esu.im/%E5%BE%90%E9%80%B8)了解一些东西。
