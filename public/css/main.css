@@ -695,6 +695,9 @@ tbody tr:nth-child(odd) th {
   color: #3394F4;
 }
 
+.sidebar img {
+  text-align: center;
+}
 /* About section */
 .sidebar-about h1 {
   color: #3394F4;
