@@ -688,6 +688,12 @@ tbody tr:nth-child(odd) th {
     width: 18rem;
     text-align: left;
   }
+  .content {
+    padding-top:    4rem!important;
+  }
+  .no-destop {
+    display:none!important;
+  }
 }
 
 /* Sidebar links */
@@ -747,7 +753,7 @@ a.sidebar-nav-item:focus {
  */
 
 .content {
-  padding-top:    4rem;
+  padding-top:    0rem;
   padding-bottom: 4rem;
 }
 
