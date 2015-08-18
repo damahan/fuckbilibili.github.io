@@ -10,7 +10,7 @@ title:  "关于404页面"
 
 很有趣对吧？
 
-实际上这是使用了cnBeining的DNSTester。源码如下：
+实际上这是使用了*cnBeining*的**DNSTester**。源码如下：
 
 ###Python版
 
