@@ -187,4 +187,4 @@ function r_send(a) {
 
 所以就来玩玩吧~ [404 Not Found~](http://fuckbilibili.com/404.html)
 
-点开右边侧栏中的*cnBeining*页面，你会发现更多有趣的东西~
+点开导航栏中的*cnBeining*页面，你会发现更多有趣的东西~
