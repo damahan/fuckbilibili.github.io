@@ -150,7 +150,7 @@ if __name__=='__main__':
 
 ##用法
 
-Python live_number.py -c 12450 -t 500
+`Python live_number.py -c 12450 -t 500`
 
 -h 得到帮助  
 -c 房间号（放肆！）  
