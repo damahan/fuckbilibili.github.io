@@ -742,3 +742,7 @@ ParseDanmuku(cid)
 			* 5：顶部弹幕
 		* danmu.content：弹幕内容
 		* danmu.danmu_color：弹幕颜色
+
+***
+
+点开导航栏中的 *Vespa314* 页面，你会发现更多有趣的东西~
