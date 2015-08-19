@@ -4,16 +4,20 @@ permalink: "biliapi.html"
 title:  "B站API"
 ---
 
-#以下B站API全部由 [**Vespa314**](https://github.com/Vespa314/bilibili-api) 收集整理及开发
+> 以下B站API全部由 [**Vespa314**](https://github.com/Vespa314/bilibili-api) 收集整理及开发。此 API 为人为整理，不能保证今后一直有效。此文的代码示例主要由 Python 实现。
 
-##直接爬取视频排行【已完成】:
+{% include.list %}
+
+##直接爬取视频排行:
+
 * 获取URL: `http://www.bilibili.tv/list/[stow]-[zone]-[page]-[year1]-[month1]-[day1]~[year2]-[month2]-[day2].html`
 
 * 返回：只关于视频部分的源码
 
 ###参数说明：
 
-####Type:排序方式
+####Type：排序方式
+
 * **收藏**：stow
 * **评论数**：review
 * **播放数**：hot
@@ -23,9 +27,10 @@ title:  "B站API"
 * *拼音*：pinyin-{x}，x可以是A~Z中的一个
 * *投稿时间*：default(越新放在越前面)
 
->**注意：**上面排序方式中，**粗体字(前六个)**部分可以获取下文描述一切分区，但是*斜体(后两个)*只能获取二级以后的分区，也就是说**不可以**通过`拼音`和`投稿时间`来获取`综合排名`,`动画`,`音乐/舞蹈`,`游戏`,`科学技术`,`娱乐`,`影视`,`动画剧番`等分区。【可能是可以的，但是我没找到方法:-D】
+> **注意：**上面排序方式中，**粗体字(前六个)**部分可以获取下文描述一切分区，但是*斜体(后两个)*只能获取二级以后的分区，也就是说**不可以**通过`拼音`和`投稿时间`来获取`综合排名`,`动画`,`音乐/舞蹈`,`游戏`,`科学技术`,`娱乐`,`影视`,`动画剧番`等分区。【可能是可以的，但是我没找到方法:-D】
 
 ####zone：分区
+
 * **综合排名**：0
 * **动画**：1
     * AMD·AMV：24
@@ -118,13 +123,14 @@ title:  "B站API"
 
 **注：page：页数，从1开始**
 
->如果只想查看原创，只需在后面加上`-original`即可，也就是URL=
+> 如果只想查看原创，只需在后面加上`-original`即可，也就是URL=
+
 `http://www.bilibili.tv/list/[stow]-[zone]-[page]-[year1]-[month1]-[day1]~[year2]-[month2]-[day2]-original.html`
 
 #### API实现：
-```python
+{% highlight python %}
 def GetPopularVideo(begintime,endtime,sortType=TYPE_BOFANG,zone=0,page=1,original=0)
-```
+{% endhighlight %}
 
 * 输入:
 	* begintime：起始时间，三元数组[year1,month1,day1]
@@ -137,17 +143,17 @@ def GetPopularVideo(begintime,endtime,sortType=TYPE_BOFANG,zone=0,page=1,origina
 * 备注：
     * 待添加：保证时间小于三个月
     * 待添加：TYPE_PINYIN模式后面要添加类似：TYPE_PINYIN-'A'
-    
----
 
-##视频Index
+## 视频Index
 * 获取URL: `http://www.bilibili.tv/list/b-[firstlatter]-[zone]-[time]-[catalog]-[state]-[style]-[updatetime]-[sorttype]-[weekday]--[page].html`
 
 * 返回：整个网页源代码
 
 
 ###参数说明：
+
 #### zone:地区
+
 * 不限：a
 * 中国大陆：a1
 * 日本：a2
@@ -162,24 +168,29 @@ def GetPopularVideo(begintime,endtime,sortType=TYPE_BOFANG,zone=0,page=1,origina
 * 其它：a16
 
 #### time:上映时间
+
 * 不限：留空即可【前后横杠要保留】
 * 范围：1956-2014【有个别日期无法选择。。】
 
 #### state:状态
+
 * 不限：留空即可【前后横杠要保留】
 * 连载中：0
 * 完结：1
 
 #### firstlatter:首字母
+
 * 不限：留空即可【前后横杠要保留】
 * A-Z：A-Z
 
 #### weekday:星期
+
 * 不限：留空即可【前后横杠要保留】
 * 周日：0
 * 周一到周六：分别取1~n
 
 #### style:影片风格
+
 * 不限：留空即可【前后横杠要保留】
 * >1:萝莉  2:御姐 3:正太 4:后宫
 5:百合  6:耽美  7:搞笑  8:恋爱
@@ -195,6 +206,7 @@ def GetPopularVideo(begintime,endtime,sortType=TYPE_BOFANG,zone=0,page=1,origina
 * 可以同时选择多种风格，用逗号隔开即可，如`1,2,4`,不过大部分不存在，要精确的话，可以选择先选择一种，然后根据返回源码即可得知当前风格加上什么风格可以有有效电影存在。
 
 #### updatetime：更新时间
+
 * 不限：留空即可【前后横杠要保留】
 * 三天内：0
 * 七天内：1
@@ -202,12 +214,14 @@ def GetPopularVideo(begintime,endtime,sortType=TYPE_BOFANG,zone=0,page=1,origina
 * 一月内：3
 
 #### sorttype:排序方式
+
 * 人气排序：a
 * 更新排序：d
 * 发布时间：n
 * 播出日期：p
 
 #### catalog：分类索引
+
 * 全部：t
 * 其它：t0
 * TV：t1
@@ -216,22 +230,28 @@ def GetPopularVideo(begintime,endtime,sortType=TYPE_BOFANG,zone=0,page=1,origina
 * 连续剧：t5
 * 电影：t6
 * 微电影：t7
+
 >很多没被分类的视频都无法在特定的索引分类下%>_<%
 
 #### page：页数
+
 必填，1~n
 
 ##按月份获取`动画`新番
+
 * 获取URL: `http://www.bilibili.tv/index/bangumi/[year]-[month].json`
 
 * 返回：json信息
 
-###参数说明：
-####输入：
+### 参数说明：
+
+#### 输入：
+
 * year:年份  四位数
 * month:月份
 
 返回：
+
 * spid：spid
 * weekday：番剧周信息
 * title：标题
@@ -240,10 +260,10 @@ def GetPopularVideo(begintime,endtime,sortType=TYPE_BOFANG,zone=0,page=1,origina
 * mcover:封面 【中】
 * scover:封面 【小】
 
----
+## B站API(无需认证或登录即可爬取的部分)：
 
-##B站API(无需认证或登录即可爬取的部分)：
-**获取本周排行**
+### 获取本周排行
+
 * URL：【返回json】
     * `http://api.bilibili.cn/index`
 * 返回格式：
@@ -269,11 +289,13 @@ def GetPopularVideo(begintime,endtime,sortType=TYPE_BOFANG,zone=0,page=1,origina
         *  coins：硬币
         *  duration：时长
 * 示例：
-```
-json['type1'][0]['title']
-```
 
-**读取作者推荐视频信息**
+{% highlight python %}
+json['type1'][0]['title']
+{% endhighlight %}
+
+### 读取作者推荐视频信息
+
 * URL：【返回json】
     * `http://api.bilibili.cn/author_recommend?aid=[id]`
 * 输入：
@@ -290,11 +312,13 @@ json['type1'][0]['title']
         *  favorites：收藏
         *  video_review：弹幕数
 * 示例
-```
-json['list']['0']['title']
-```
 
-**读取评论【已完成】**
+{% highlight python %}
+json['list']['0']['title']
+{% endhighlight %}
+
+### 读取评论
+
 * URL：【返回json】
     * `http://api.bilibili.cn/feedback`
 * 输入：
@@ -323,14 +347,16 @@ json['list']['0']['title']
 
 
 #### API实现：
-```python
+
+{% highlight python %}
 # 获取视频单页评论
 def GetComment(aid, page = None, pagesize = None, order = None)
 # 获取视频全部评论
 def GetAllComment(aid, order = None)
-```
+{% endhighlight %}
 
-**读取专题信息**
+### 读取专题信息
+
 * URL：【返回json】
     * `http://api.bilibili.tv/sp`
 * 输入：
@@ -354,17 +380,20 @@ def GetAllComment(aid, order = None)
     * attention：专题被关注次数
     * count：专题视频数量
 * 示例
-```python
+
+```
 http://api.bilibili.tv/sp?title=VOCALOID
 ```
 
-**读取专题视频信息【已完成】**
+### 读取专题视频信息
+
 * URL：【返回json】
     * ` http://api.bilibili.cn/spview`
 * 输入：
     * spid：专题SPID
     * season_id：专题分季ID【选填】
     * bangumi：设置为1时只返回番剧类视频 设置为0时只返回普通视频 不设置则返回所有视频【选填】
+
 > 经测试，设置为1返回剧番，不设置或者设置为0返回相关视频
 
 * 返回格式：
@@ -384,14 +413,15 @@ http://api.bilibili.tv/sp?title=VOCALOID
         * cid：cid
         * episode：集数【注：不是所有专题视频都有此信息】
 
->说明：关于SPID的获取，暂时只知道`chrome`点击`F12`，然后查看`Network`中html的文件名编号
+> 说明：关于SPID的获取，暂时只知道 `chrome` 按下 `F12`，然后查看`Network`中html的文件名编号
 http://www.bilibili.tv/sppage/bangumi-[spid]-[page].html 也可以获得专题剧番的信息，有空补上说明
 http://www.bilibili.tv/sppage/ad-recommend-[spid]-[page].html也可以获得相关专题信息。
 
 #### API实现：
-```python
+
+{% highlight python %}
 def GetVideoOfZhuanti(spid,season_id=None,bangumi=None)
-```
+{% endhighlight %}
 
 * 输入:
 	* spid：见上
@@ -399,10 +429,8 @@ def GetVideoOfZhuanti(spid,season_id=None,bangumi=None)
     * bangumi：见上
 * 返回：
     * 见上第三层
-    
 
-
-**读取用户信息【已完成】**
+### 读取用户信息
 
 * URL：【返回json】
     * `http://api.bilibili.cn/userinfo`
@@ -427,19 +455,19 @@ def GetVideoOfZhuanti(spid,season_id=None,bangumi=None)
     * attentions：关注的好友列表
 
 #### API实现
-```python
+
+{% highlight python %}
 GetUserInfoBymid(mid)
 GetUserInfoByName(name)
-```
+{% endhighlight %}
 
 **说明：**返回数据编码紊乱，有些utf8有些是gbk。。如果现实有问题，请自行调整
 
----
+## B站API(需认证)：
 
-##B站API(需认证)：
 > 下方所有调用api方法均要加入`appkey=...`,如果是新注册的appkey的话还需要加入sign，具体算法是：
-python：
-```python
+
+{% highlight python %}
 def GetSign(params, appkey, AppSecret=None):
     """
     获取新版API的签名，不然会返回-3错误
@@ -459,9 +487,11 @@ def GetSign(params, appkey, AppSecret=None):
     m = hashlib.md5()
     m.update(data+AppSecret)
     return data+'&sign='+m.hexdigest()
-```
-js:
-```Javascript
+{% endhighlight %}
+
+JavaScript 实现:
+
+{% highlight javascript %}
 function get_sign(params, key)
  {
      var s_keys = [];
@@ -481,10 +511,11 @@ function get_sign(params, key)
          "params":data
      };
  }
- ```
+{% endhighlight %}
 
 
-**读取视频信息**【已完成】
+### 读取视频信息
+
 * URL：【返回json】
     * ` http://api.bilibili.cn/view`
 * 输入：
@@ -523,12 +554,14 @@ function get_sign(params, key)
 > **注意：**发现有部分视频必须登陆后才可以获得视频信息，这部分待完善！！！！
 
 #### API实现：
-```python
+
+{% highlight python %}
 def GetVideoInfo(aid, appkey,page = 1, AppSecret=None, fav = None)
-```
+{% endhighlight %}
 
 
-**获取新番信息**【已完成】
+**获取新番信息**
+
 * URL：【返回json】
     * ` http://api.bilibili.cn/bangumi`
 * 输入：
@@ -561,9 +594,11 @@ def GetVideoInfo(aid, appkey,page = 1, AppSecret=None, fav = None)
         * scover:封面图片地址  【为什么有两个。。】
         * mcover:封面图片地址  【为什么有三个。。】
         * click:浏览量
+
 > 几个封面应该是不同大小的图片，但是不知为何返回来都是一样大的。。
 
-**获取排行信息**【已完成】
+### 获取排行信息
+
 * URL：【返回json】
     * `http://api.bilibili.cn/list`
 * 输入：
@@ -592,6 +627,7 @@ def GetVideoInfo(aid, appkey,page = 1, AppSecret=None, fav = None)
         * pinyin	 按标题拼音排序
 
 > **注：**
+
 * 好像pagesize必填，不然出错。而且读取速度不能太快，返回速度也比较慢。
 * click_detail好像只要填了非空，就可以获得`play_site`,`play_forward`,`play_mobile`三个数据
 
@@ -628,17 +664,20 @@ def GetVideoInfo(aid, appkey,page = 1, AppSecret=None, fav = None)
         * play_mobile:app播放
 
 错误代码：
+
 * -601:起始日期格式错误
 * -602:结束日期格式错误
 * -603:选择的时间跨度过大
 * -604:沒有输入拼音
 
 #### API实现：
-```python
-def GetRank(appkey, tid, begin=None, end=None, page = None, pagesize=None, click_detail =None, order = None, AppSecret=None)
-```
 
-**搜索视频**【已完成】
+{% highlight python %}
+def GetRank(appkey, tid, begin=None, end=None, page = None, pagesize=None, click_detail =None, order = None, AppSecret=None)
+{% endhighlight %}
+
+### 搜索视频
+
 * URL：【返回json】
     * `http://api.bilibili.cn/search`
 * 输入：
@@ -666,11 +705,13 @@ def GetRank(appkey, tid, begin=None, end=None, page = None, pagesize=None, click
 > 【**注意：**】经测试，此api的appkey必须使用新版的，即必须配合AppSecret使用，否则会返回{“code”:-3,”message”:”API sign invalid”}
 
 #### API实现：
-```python
-def biliVideoSearch(appkey, AppSecret, keyword, order = ‘default’, pagesize = 20, page = 1)
-```
 
-**搜索专题**【已完成】
+{% highlight python %}
+def biliVideoSearch(appkey, AppSecret, keyword, order = ‘default’, pagesize = 20, page = 1)
+{% endhighlight %}
+
+### 搜索专题
+
 * URL：【返回json】
     * `http://api.bilibili.cn/search`
 * 输入：
@@ -701,17 +742,18 @@ def biliVideoSearch(appkey, AppSecret, keyword, order = ‘default’, pagesize 
 > 【**注意：**】经测试，此api的appkey必须使用新版的，即必须配合AppSecret使用，否则会返回{“code”:-3,”message”:”API sign invalid”}
 
 #### API实现：
-```python
-biliZhuantiSearch(appkey, AppSecret, keyword)
-```
 
----
+{% highlight python %}
+biliZhuantiSearch(appkey, AppSecret, keyword)
+{% endhighlight %}
+
 ## 辅助API
 
-**获取视频下载URL**【已完成】
+### 获取视频下载URL
 
-code：
+{% highlight python %}
 GetBilibiliUrl(url,appkey,AppSecret=None)
+{% endhighlight %}
 
 * 输入：
 	* url：视频地址，比如：
@@ -724,10 +766,11 @@ GetBilibiliUrl(url,appkey,AppSecret=None)
 
 > 返回URL地址经常变化，而且有时返回的是若干个6分钟短视频的url，需要通过ffmpeg等工具连接起来，但是偶尔再等一下返回的又变成一个URL了。。。
 
-**获取弹幕信息**【已完成】
+### 获取弹幕信息
 
-code：
+{% highlight python %}
 ParseDanmuku(cid)
+{% endhighlight %}
 
 * 输入：
 	* cid：视频cid
@@ -742,7 +785,5 @@ ParseDanmuku(cid)
 			* 5：顶部弹幕
 		* danmu.content：弹幕内容
 		* danmu.danmu_color：弹幕颜色
-
-***
 
 点开导航栏中的 *Vespa314* 页面，你会发现更多有趣的东西~
