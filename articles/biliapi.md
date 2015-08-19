@@ -6,7 +6,7 @@ title:  "B站API"
 
 > 以下B站API全部由 [**Vespa314**](https://github.com/Vespa314/bilibili-api) 收集整理及开发。此 API 为人为整理，不能保证今后一直有效。此文的代码示例主要由 Python 实现。
 
-{% include.list %}
+{% include list.html %}
 
 ##直接爬取视频排行:
 
