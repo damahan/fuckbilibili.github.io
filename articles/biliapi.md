@@ -8,15 +8,15 @@ title:  "B站API"
 
 {% include list.html %}
 
-##直接爬取视频排行:
+##直接爬取视频排行
 
 * 获取URL: `http://www.bilibili.tv/list/[stow]-[zone]-[page]-[year1]-[month1]-[day1]~[year2]-[month2]-[day2].html`
 
 * 返回：只关于视频部分的源码
 
-###参数说明：
+### 参数说明
 
-####Type：排序方式
+#### Type：排序方式
 
 * **收藏**：stow
 * **评论数**：review
@@ -29,7 +29,7 @@ title:  "B站API"
 
 > **注意：**上面排序方式中，**粗体字(前六个)**部分可以获取下文描述一切分区，但是*斜体(后两个)*只能获取二级以后的分区，也就是说**不可以**通过`拼音`和`投稿时间`来获取`综合排名`,`动画`,`音乐/舞蹈`,`游戏`,`科学技术`,`娱乐`,`影视`,`动画剧番`等分区。【可能是可以的，但是我没找到方法:-D】
 
-####zone：分区
+#### zone：分区
 
 * **综合排名**：0
 * **动画**：1
@@ -127,7 +127,7 @@ title:  "B站API"
 
 `http://www.bilibili.tv/list/[stow]-[zone]-[page]-[year1]-[month1]-[day1]~[year2]-[month2]-[day2]-original.html`
 
-#### API实现：
+#### API实现
 {% highlight python %}
 def GetPopularVideo(begintime,endtime,sortType=TYPE_BOFANG,zone=0,page=1,original=0)
 {% endhighlight %}
@@ -150,9 +150,9 @@ def GetPopularVideo(begintime,endtime,sortType=TYPE_BOFANG,zone=0,page=1,origina
 * 返回：整个网页源代码
 
 
-###参数说明：
+###参数说明
 
-#### zone:地区
+#### zone：地区
 
 * 不限：a
 * 中国大陆：a1
@@ -167,29 +167,29 @@ def GetPopularVideo(begintime,endtime,sortType=TYPE_BOFANG,zone=0,page=1,origina
 * 德国：a15
 * 其它：a16
 
-#### time:上映时间
+#### time：上映时间
 
 * 不限：留空即可【前后横杠要保留】
 * 范围：1956-2014【有个别日期无法选择。。】
 
-#### state:状态
+#### state：状态
 
 * 不限：留空即可【前后横杠要保留】
 * 连载中：0
 * 完结：1
 
-#### firstlatter:首字母
+#### firstlatter：首字母
 
 * 不限：留空即可【前后横杠要保留】
 * A-Z：A-Z
 
-#### weekday:星期
+#### weekday：星期
 
 * 不限：留空即可【前后横杠要保留】
 * 周日：0
 * 周一到周六：分别取1~n
 
-#### style:影片风格
+#### style：影片风格
 
 * 不限：留空即可【前后横杠要保留】
 * >1:萝莉  2:御姐 3:正太 4:后宫
@@ -213,7 +213,7 @@ def GetPopularVideo(begintime,endtime,sortType=TYPE_BOFANG,zone=0,page=1,origina
 * 半月内：2
 * 一月内：3
 
-#### sorttype:排序方式
+#### sorttype：排序方式
 
 * 人气排序：a
 * 更新排序：d
@@ -243,14 +243,14 @@ def GetPopularVideo(begintime,endtime,sortType=TYPE_BOFANG,zone=0,page=1,origina
 
 * 返回：json信息
 
-### 参数说明：
+### 参数说明
 
-#### 输入：
+#### 输入
 
 * year:年份  四位数
 * month:月份
 
-返回：
+#### 返回
 
 * spid：spid
 * weekday：番剧周信息
@@ -260,7 +260,7 @@ def GetPopularVideo(begintime,endtime,sortType=TYPE_BOFANG,zone=0,page=1,origina
 * mcover:封面 【中】
 * scover:封面 【小】
 
-## B站API(无需认证或登录即可爬取的部分)：
+## 无需认证 API
 
 ### 获取本周排行
 
@@ -346,7 +346,7 @@ json['list']['0']['title']
         *  nick：发布人暱称
 
 
-#### API实现：
+#### API实现
 
 {% highlight python %}
 # 获取视频单页评论
@@ -417,7 +417,7 @@ http://api.bilibili.tv/sp?title=VOCALOID
 http://www.bilibili.tv/sppage/bangumi-[spid]-[page].html 也可以获得专题剧番的信息，有空补上说明
 http://www.bilibili.tv/sppage/ad-recommend-[spid]-[page].html也可以获得相关专题信息。
 
-#### API实现：
+#### API实现
 
 {% highlight python %}
 def GetVideoOfZhuanti(spid,season_id=None,bangumi=None)
@@ -463,7 +463,7 @@ GetUserInfoByName(name)
 
 **说明：**返回数据编码紊乱，有些utf8有些是gbk。。如果现实有问题，请自行调整
 
-## B站API(需认证)：
+## 需认证 API
 
 > 下方所有调用api方法均要加入`appkey=...`,如果是新注册的appkey的话还需要加入sign，具体算法是：
 
@@ -553,7 +553,7 @@ function get_sign(params, key)
 
 > **注意：**发现有部分视频必须登陆后才可以获得视频信息，这部分待完善！！！！
 
-#### API实现：
+#### API实现
 
 {% highlight python %}
 def GetVideoInfo(aid, appkey,page = 1, AppSecret=None, fav = None)
@@ -670,7 +670,7 @@ def GetVideoInfo(aid, appkey,page = 1, AppSecret=None, fav = None)
 * -603:选择的时间跨度过大
 * -604:沒有输入拼音
 
-#### API实现：
+#### API实现
 
 {% highlight python %}
 def GetRank(appkey, tid, begin=None, end=None, page = None, pagesize=None, click_detail =None, order = None, AppSecret=None)
@@ -704,7 +704,7 @@ def GetRank(appkey, tid, begin=None, end=None, page = None, pagesize=None, click
   
 > 【**注意：**】经测试，此api的appkey必须使用新版的，即必须配合AppSecret使用，否则会返回{“code”:-3,”message”:”API sign invalid”}
 
-#### API实现：
+#### API实现
 
 {% highlight python %}
 def biliVideoSearch(appkey, AppSecret, keyword, order = ‘default’, pagesize = 20, page = 1)
@@ -741,7 +741,7 @@ def biliVideoSearch(appkey, AppSecret, keyword, order = ‘default’, pagesize 
   
 > 【**注意：**】经测试，此api的appkey必须使用新版的，即必须配合AppSecret使用，否则会返回{“code”:-3,”message”:”API sign invalid”}
 
-#### API实现：
+#### API实现
 
 {% highlight python %}
 biliZhuantiSearch(appkey, AppSecret, keyword)
