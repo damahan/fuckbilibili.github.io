@@ -371,7 +371,7 @@ if __name__=='__main__':
 
 ##用法
 
-```
+{% highlight bash %}
 python3 srt2bilibili.py (-h) (-a 12345678) [-p 1] [-c ./bilicookies] (-s 1.srt) [-f 18] [-m 0] [-o 16711680] [-w 0.1] [-l 0] (-i)
 
 -h: 默认：无  
@@ -392,7 +392,7 @@ python3 srt2bilibili.py (-h) (-a 12345678) [-p 1] [-c ./bilicookies] (-s 1.srt) 
 -s 默认：无  
     你想发的srt文件  
     srt2bilibili会将多行字幕转换成多行弹幕发出去  
-    因为不让用\n
+    因为不让用
 
 -f 默认：18  
     弹幕大小
@@ -423,7 +423,7 @@ python3 srt2bilibili.py (-h) (-a 12345678) [-p 1] [-c ./bilicookies] (-s 1.srt) 
 
 -i 默认：没有  
     用假ip发弹幕
-```
+{% endhighlight %}
 
 更多信息[http://docs.bilibili.cn/wiki/API.comment](http://docs.bilibili.cn/wiki/API.comment)
 
