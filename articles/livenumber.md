@@ -150,14 +150,14 @@ if __name__=='__main__':
 
 ##用法
 
-```
-`Python live_number.py -c 12450 -t 500`
+{% highlight bash %}
+~ $ python live_number.py -c 12450 -t 500
 
 -h 得到帮助  
 -c 房间号（放肆！）  
 -t 增加的人数  
 -p 代理文件（以ip:port形式存储）
-```
+{% endhighlight %}
 
 对了，你还需要`pip install websocket-client`一下
 

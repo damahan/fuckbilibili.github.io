@@ -4,5 +4,6 @@ layout: default
 
 <div class="page">
   <h1 class="page-title">{{ page.title }}</h1>
+  <header><a href="https://github.com/fuckbilibili/fuckbilibili.github.io/edit/master/{{ page.path }}" target="_blank">帮助我们改善此页面</a>{% if page.title %} | <a href="https://github.com/fuckbilibili/fuckbilibili.github.io/issues/new?title=%E8%AF%84%E8%AE%BA%3A+{{ page.title | cgi_escape }}" target="_blank">评论此页面</a>{% endif %}</header>
   {{ content }}
 </div>

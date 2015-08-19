@@ -1,8 +1,8 @@
 ---
 layout: page
+title: "为什么我们想要做这个网站？"
+full_title: "哔哩哔哩乾nm的杯! - FuckBilibili"
 ---
-
-# 为什么我们想要做这个网站？
 
 你有必要先看看[这个](http://wiki.esu.im/%E5%BE%90%E9%80%B8)了解一些东西。
 
