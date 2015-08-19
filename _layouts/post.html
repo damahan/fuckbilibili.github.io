@@ -4,7 +4,7 @@ layout: default
 
 <div class="post">
   <h1 class="post-title">{{ page.title }}</h1>
-  <header><a href="https://github.com/fuckbilibili/fuckbilibili.github.io/edit/master/{{ page.path }}" target="_blank">帮助我们改善此页面</a>{% if page.title %} | <a href="https://github.com/fuckbilibili/fuckbilibili.github.io/issues/new?title=%E8%AF%84%E8%AE%BA%3A+{{ page.title | cgi_escape }}" target="_blank">评论此页面</a>{% endif %}</header>
+  <header style="display: block; border-bottom: rgba(235, 242, 246, 0.29) 1px solid; padding: 0; margin-bottom: 1em"><a href="https://github.com/fuckbilibili/fuckbilibili.github.io/edit/master/{{ page.path }}" target="_blank">帮助我们改善此页面</a>{% if page.title %} | <a href="https://github.com/fuckbilibili/fuckbilibili.github.io/issues/new?title=%E8%AF%84%E8%AE%BA%3A+{{ page.title | cgi_escape }}" target="_blank">评论此页面</a>{% endif %}</header>
   <span class="post-date">{{ page.date | date_to_string }}</span>
   {{ content }}
 </div>
