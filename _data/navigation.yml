@@ -1,5 +1,7 @@
 - title: "增加直播间人数"
   url: "/livenumber.html"
+- title: "批量发弹幕器"
+  url: "/srt2bilibili.html"
 - title: "B站API"
   url: "/biliapi.html"
 - title: "关于 404 页面"
