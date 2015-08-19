@@ -386,7 +386,7 @@ python3 srt2bilibili.py (-h) (-a 12345678) [-p 1] [-c ./bilicookies] (-s 1.srt) 
     cookies文件  
     看起来应该是这样的：  
 
-    `DedeUserID=123456;DedeUserID__ckMd5=****************;SESSDATA=*******************`
+    DedeUserID=123456;DedeUserID__ckMd5=****************;SESSDATA=*******************
 
 -s 默认：无  
     你想发的srt文件  
