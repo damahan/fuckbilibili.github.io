@@ -12,7 +12,7 @@ title:  "增加直播间人数"
 
 经过三种弹幕姬代码的反复对比，最终发现b站是使用 **WebSocket** 进行的弹幕连接和获取。
 
-于是<del>跪着</del>请 *cnBeining* 写了一个 Python 版本的 WebSocket 连接器，又<del>厚颜无耻</del>的让她加上了一个 HTTP Proxy 功能……
+于是<del>跪着</del>请 *cnBeining* 写了一个 Python 版本的 WebSocket 连接器，又<del>厚颜无耻</del>的让他加上了一个 HTTP Proxy 功能……
 
 ### 源码如下：
 
