@@ -4,7 +4,7 @@ permalink: "livenumber.html"
 title:  "增加直播间人数"
 ---
 
-注意，相同ip已经不可用，请使用代理
+typcn已经在[他的Gist](https://gist.github.com/typcn/cd87a471e0575a6785b9)上改进，但还没有征得作者同意，故不能放到此网站上。
 
 ## 事前唠个叨
 
