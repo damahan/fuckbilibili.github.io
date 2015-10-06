@@ -12,7 +12,7 @@ title:  "增加直播间人数 - 加强版"
 
 于是<del>跪着</del>请 *cnBeining* 写了一个 Python 版本的 WebSocket 连接器，又<del>厚颜无耻</del>的让他加上了一个 HTTP Proxy 功能……
 
-但是这个黑科技<del>在我的肆意使用下</del>失效了，然后遍没有了音信……
+但是这个黑科技<del>在我的肆意使用下</del>失效了，然后便一直是失效的……
 
 突然发现typcn已经在他的Gist上改进了！并且CPU占用率<del>极高</del>极低，带30秒心跳。
 
@@ -102,6 +102,7 @@ if __name__=='__main__':
 {% highlight bash %}
 ~ $ python live_number.py -c 12450 -t 500
 
+-h 帮助  
 -c 房间号（放肆！）  
 -t 增加的人数
 {% endhighlight %}
