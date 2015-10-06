@@ -18,6 +18,7 @@ title:  "增加直播间人数 - 加强版"
 
 ### 源码如下：
 
+{% highlight python %}
 #!/usr/bin/env python
 #coding:utf-8
 # Author:  Beining --<cnbeining#gmail.com>
