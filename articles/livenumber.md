@@ -102,7 +102,7 @@ if __name__=='__main__':
 ~ $ python live_number.py -c 12450 -t 500
 
 -c 房间号（放肆！）  
--t 增加的人数  
+-t 增加的人数
 {% endhighlight %}
 
 ***
