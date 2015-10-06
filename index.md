@@ -21,5 +21,3 @@ b站的历史不必多说，影响力也不必多说，内容的丰富性也不�
 我们也非常希望各样的程序猿能来这里投稿，你们可以直接 [Fork 这个项目](https://github.com/fuckbilibili/fuckbilibili.github.io/fork)，根据[新页面向导](https://github.com/fuckbilibili/fuckbilibili.github.io/tree/master/_example/guideline.md)建立你的页面，然后发送一个 Pull request。
 
 如果你认为我们网页有任何的问题或是你有一些意见，请[在这里发表 issues](https://github.com/fuckbilibili/fuckbilibili.github.io/issues/new)。
-
-Some Test For Stupid ZE3KR
