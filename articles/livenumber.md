@@ -1,10 +1,8 @@
 ---
 layout: page
 permalink: "livenumber.html"
-title:  "增加直播间人数"
+title:  "增加直播间人数 - 加强版"
 ---
-
-typcn已经在[他的Gist](https://gist.github.com/typcn/cd87a471e0575a6785b9)上改进，但还没有征得作者同意，故不能放到此网站上。
 
 ## 事前唠个叨
 
@@ -14,12 +12,16 @@ typcn已经在[他的Gist](https://gist.github.com/typcn/cd87a471e0575a6785b9)�
 
 于是<del>跪着</del>请 *cnBeining* 写了一个 Python 版本的 WebSocket 连接器，又<del>厚颜无耻</del>的让他加上了一个 HTTP Proxy 功能……
 
+但是这个黑科技<del>在我的肆意使用下</del>失效了，然后遍没有了音信……
+
+突然发现typcn已经在他的Gist上改进了！并且CPU占用率<del>极高</del>极低，带30秒心跳。
+
 ### 源码如下：
 
-{% highlight python %}
 #!/usr/bin/env python
 #coding:utf-8
 # Author:  Beining --<cnbeining#gmail.com>
+# Author:  TYPCN --<typcncom#gmail.com> ( Performance improve and fix )
 # Purpose: A simple script to get lots of viewers of Bilibili Live
 # Created: 08/11/2015
 # Error report: http://www.cnbeining.com/?p=952
@@ -29,87 +31,34 @@ import sys
 import time
 import getopt
 from multiprocessing import Process
-from websocket import create_connection, WebSocketConnectionClosedException, WebSocketProxyException, WebSocketException
+import binascii
 import random
 import re
 import traceback
 import socket
+from threading import Thread
+from multiprocessing.pool import ThreadPool
 
 global proxy_list
 
 #----------------------------------------------------------------------
 def fake_connector(cid, is_proxy = False):
     """"""
-    try:
-        if is_proxy:
-            proxy_server = random.choice(proxy_list)
-            host, port = proxy_server.split(':')
-            ws = create_connection('ws://livecmt.bilibili.com:88/{cid}'.format(cid = cid), http_proxy_host = host, http_proxy_port = int(port))
-        else:
-            ws = create_connection('ws://livecmt.bilibili.com:88/{cid}'.format(cid = cid))
-        while 1:
-            time.sleep(5)
-            a = ws.recv()
-    except (WebSocketProxyException, socket.error, TypeError):  #proxy server died
-            #/usr/local/lib/python2.7/site-packages/websocket/_http.py L186 WTF????
-        print(proxy_server + ' died!')
-        try:
-            proxy_list.remove(proxy_server)
-        except Exception, err:
-            print(traceback.format_exc())
-    except (WebSocketConnectionClosedException, WebSocketException):
-        return -1
-    except Exception, err:
-        print(traceback.format_exc())
-        return 0
-    finally:
-        return
+    s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+    s.connect(("livecmt.bilibili.com",88))
+    handshake = "0101000c0000%04x00000000" % int(cid)
+    s.send(binascii.a2b_hex(handshake))
+    while 1:
+        time.sleep(29)
+        s.send(binascii.a2b_hex("01020004"))
 
 #----------------------------------------------------------------------
 def main(cid, thread_number, is_proxy = False):
-    """"""
-    #Get a list of threads
-    process_list = [Process(target=fake_connector, args=((cid, is_proxy, ))) for i in xrange(int(thread_number))]  #Queue? Your ass
-    [i.start() for i in process_list]  #ignite every one
-    try:
-        while 1:
-            alive_list = [i.is_alive() for i in process_list]
-            print('Active thread: ' + str(len(alive_list)))
-            death_position_list = [i for i, x in enumerate(alive_list) if x == False]
-            if len(death_position_list) > 0:  #someone died
-                print('Some died, adding {COUNT} new threads'.format(COUNT = len(death_position_list)))
-                for i in death_position_list:
-                    del process_list[i]  #remove body
-                    process_list.append(Process(target=fake_connector, args=((cid, is_proxy, ))))
-                    process_list[-1].start()  #ignite
-            time.sleep(3)
-    except Exception as e:
-        print(e)
-        for i in process_list:
-            try:
-                i.terminate()  #ensure safe exit
-            except:
-                pass
-        exit()
-
-#----------------------------------------------------------------------
-def proxy_file_to_list(proxy_file):
-    """fileIO->list
-    file:
-    112.20.190.135:80
-    223.151.86.8:9000
-    171.36.67.213:8090
-    124.202.168.26:8118
-    219.133.31.120:8888
-    
-    list:
-    ['112.20.190.135:80', '223.151.86.8:9000', '171.36.67.213:8090',...
-    """
-    final_list = []
-    pattern = re.compile(r'\d+.\d+.\d+.\d+:\d+')  #117.149.219.176:8123
-    with open(proxy_file, 'r') as file_this:
-        final_list = [line.strip() for line in file_this if pattern.match(line)]
-    return final_list
+    pool = ThreadPool(int(thread_number))
+    for x in range(0, thread_number*10):
+        pool.apply_async(fake_connector,[cid, is_proxy])
+    pool.close()
+    time.sleep(99999999)
 
 #----------------------------------------------------------------------
 def usage():
@@ -117,8 +66,8 @@ def usage():
     print('''Use as:
     -c: cid, room number
     -t: thread number
-    -p: proxy file
-    
+
+    You can use Tor and proxychains or others to proxy
     Press Ctrl+C to exit.
     ''')
 
@@ -126,8 +75,8 @@ if __name__=='__main__':
     is_proxy = False
     argv_list = sys.argv[1:]
     try:
-        opts, args = getopt.getopt(argv_list, "hc:t:p:",
-                                   ['help', "cid=", 'thread_number=', 'proxy_file='])
+        opts, args = getopt.getopt(argv_list, "hc:t:",
+                                   ['help', "cid=", 'thread_number='])
     except getopt.GetoptError:
         usage()
         exit()
@@ -139,30 +88,23 @@ if __name__=='__main__':
             cid = a
         if o in ('-t', '--thread_number'):
             thread_number = int(a)
-        if o in ('-p', '--proxy_file'):
-            is_proxy = True
-            proxy_file = a
     if is_proxy:
         proxy_list = proxy_file_to_list(proxy_file)
     print('Getting room {cid} {thread_number} viewers...'.format(cid = cid, thread_number = thread_number))
     main(cid, thread_number, is_proxy)
 {% endhighlight %}
 
-嘛，开包即用，效果良好。大家可以在[这里](/script/live_number.py)或者 [Github](https://gist.github.com/cnbeining/6b2273d7e332f29193d0) 上找到源码。
+嘛，开包即用，效果良好。大家可以在[这里](/script/live_number.py)或者 [Github](https://gist.github.com/typcn/cd87a471e0575a6785b9) 上找到源码。
 
 ##用法
 
 {% highlight bash %}
 ~ $ python live_number.py -c 12450 -t 500
 
--h 得到帮助  
 -c 房间号（放肆！）  
 -t 增加的人数  
--p 代理文件（以ip:port形式存储）
 {% endhighlight %}
-
-对了，你还需要`pip install websocket-client`一下
 
 ***
 
-就是这样，点开导航栏中的 *cnBeining* 页面，你会发现更多有趣的东西~
+就是这样，点开导航栏中的 *typcn* 页面，你会发现更多有趣的东西~
